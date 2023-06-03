@@ -1,2 +1,3 @@
 # BRACEBALANCE
-cw-ip-211_bracebalance created by GitHub Classroom
+## Курсовая работа по ТРПО
+Выполнил студент группы ИП-211: Шабанов Дмитрий

@@ -2,13 +2,17 @@ import unittest
 
 import main
 from main import *
-from tkinter import *
 
 
 class TestBraceBalance(unittest.TestCase):
-    def Window_test(self):
-        self.assertEqual(close_program(), SystemExit)
-        self.assertEqual(func(5), 6)
+    def test_Window(self):
+        self.assertEqual(main.root.title(), "Brace Balance")
+
+    def test_Exit(self):
+        self.assertRaises(SystemExit)
+
+    def test_DrawWidgets(self):
+        self.assertTrue(draw_widgets)
 
 
 if __name__ == '__main__':

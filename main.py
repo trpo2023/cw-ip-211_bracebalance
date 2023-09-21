@@ -7,9 +7,11 @@ root.geometry("500x300")
 root.resizable(False, False)
 root.configure(background="black")
 
+
 def run():
     draw_widgets()
     root.mainloop()
+
 
 def draw_widgets():
     label_header = Label(root, text="Brace Balance", font="Ubuntu 20",
@@ -20,14 +22,17 @@ def draw_widgets():
     label_check.place(x=280, y=20)
 
     button_load = Button(root, width=20, height=2, text="Check File", relief=FLAT,
-                    bg="white", command=check_file)
+                         bg="white", command=check_file)
     button_load.place(x=20, y=80)
     button_exit = Button(root, width=20, height=2, text="Exit", relief=FLAT,
-                    bg="white", command=close_program)
+                         bg="white", command=close_program)
     button_exit.place(x=20, y=140)
+
 
 def close_program():
     exit(0)
+
+
 def check_file():
     label_result = Label(root, font="Ubuntu 20", bg="black", fg="white")
     label_result.place(x=280, y=80)
@@ -42,6 +47,7 @@ def check_file():
     brace_string = []
     stack = []
     is_good = True
+
     def search_braces():
         while True:
             line = file.readline()
@@ -73,10 +79,12 @@ def check_file():
         if is_good and len(stack) == 0:
             label_result.configure(text="BRACES BALANCED")
         else:
-            label_result.configure(text="BRACES NOT BALANCED")
+            label_result.configure(text="BRACES NOT\nBALANCED")
 
-    search_braces()
-    check_braces(is_good)
+    if file_name:
+        search_braces()
+        check_braces(is_good)
+
 
 if __name__ == '__main__':
     run()

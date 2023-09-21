@@ -1,8 +1,8 @@
 run:
-	python3.10.12 main.py
+	python3 main.py
 
 test:
-	pytest test.py
+	python3 test.py
 
 clean:
 	rm -rf __pycache__

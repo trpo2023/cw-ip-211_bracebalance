@@ -20,14 +20,17 @@ def search_braces(file):
     file.close()
 
 
-def check_braces():
+def check_braces(brace_string):
     is_good = True
+    stack = []
+    result = 0
     symbols = 0
     for i in brace_string:
         if i not in '({[)}]':
             symbols += 1
     if len(brace_string) == symbols:
         print("BRACES NOT FOUND")
+        result = -1
     for i in brace_string:
         if i in '({[':
             stack.append(i)
@@ -47,15 +50,16 @@ def check_braces():
     if is_good and len(stack) == 0:
         if brace_string:
             print("BRACES BALANCED")
+            result = 0
     else:
         print("BRACES NOT BALANCED")
+        result = 1
     brace_string.clear()
     stack.clear()
-
+    return result
 
 if __name__ == '__main__':
     brace_string = []
-    stack = []
     wanted_files = (
         ("Text Files", "*.txt"),
         ("C Files", "*.c"),
@@ -69,7 +73,7 @@ if __name__ == '__main__':
             if file_name:
                 file = open(f"{file_name}", "r")
                 search_braces(file)
-                check_braces()
+                check_braces(brace_string)
             command = input()
         else:
             print("Error: unknown command")
